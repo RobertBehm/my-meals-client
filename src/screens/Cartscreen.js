@@ -36,8 +36,8 @@ export default function Cartscreen() {
                       {item.name} [{item.size}]
                     </h5>
                     <h5>
-                      Price : {item.quantity} * {item.prices[0][item.size] / 10}{" "}
-                      = ${(item.quantity * item.prices[0][item.size]) / 10}
+                      Price : {item.quantity} * {item.prices[0][item.size]} = $
+                      {item.quantity * item.prices[0][item.size]}
                     </h5>
                     <h5 style={{ display: "inline" }}>Quantity : </h5>
                     <i
