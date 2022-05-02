@@ -71,7 +71,7 @@ export default function Customerslist() {
                     })}
                   </td>
                   <td>
-                    ${total} <br />{" "}
+                    {total} <br />
                     {customer.deliveryCharges ? `Delivery` : `Pickup`}{" "}
                   </td>
                   <td>

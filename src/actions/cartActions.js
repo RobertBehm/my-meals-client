@@ -7,7 +7,7 @@ export const addToCart =
       size: size,
       quantity: Number(quantity),
       prices: meal.prices,
-      price: meal.prices[0][size] * quantity,
+      price: meal.prices[0][size],
     };
 
     if (cartItem.quantity > 10) {
