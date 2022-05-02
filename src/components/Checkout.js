@@ -58,7 +58,7 @@ export default function Checkout({ subtotal }) {
           </button>
         </StripeCheckout>
       </div>
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={() => setShow(false)}>
         <Modal.Header>
           <Modal.Title>
             <p style={{ color: "#808080" }}>
