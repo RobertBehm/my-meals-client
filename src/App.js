@@ -13,7 +13,6 @@ const Loginscreen = lazy(() => import("./screens/Loginscreen"));
 const Ordersscreen = lazy(() => import("./screens/Ordersscreen"));
 const Adminscreen = lazy(() => import("./screens/Adminscreen"));
 const Shippingscreen = lazy(() => import("./screens/Shippingscreen"));
-const Paymentscreen = lazy(() => import("./screens/Paymentscreen"));
 const Success = lazy(() => import("./screens/Success"));
 const Cancelled = lazy(() => import("./screens/Cancelled"));
 
@@ -30,9 +29,8 @@ function App() {
           <Route path="/login" exact component={Loginscreen} />
           <Route path="/orders" exact component={Ordersscreen} />
           <Route path="/shipping" exact component={Shippingscreen} />
-          <Route path="/payment" exact component={Paymentscreen} />
-          <Route path="/payment" exact component={Success} />
-          <Route path="/payment" exact component={Cancelled} />
+          <Route path="/success" exact component={Success} />
+          <Route path="/cancelled" exact component={Cancelled} />
           <Route path="/admin" component={Adminscreen} />
         </BrowserRouter>
       </Suspense>

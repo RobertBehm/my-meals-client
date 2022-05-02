@@ -37,7 +37,7 @@ export default function Customerslist() {
             customers.map((customer) => {
               let total = Number(
                 customer.foods
-                  .map((item) => item.price)
+                  .map((item) => (item.price / 100) * item.quantity)
                   .reduce(function (previousValue, currentValue) {
                     return previousValue + currentValue;
                   }, 0)
@@ -62,7 +62,6 @@ export default function Customerslist() {
                           <div>{item.name}</div>
                           <div>Size: {item.size}</div>
                           <div>Quantity: {item.quantity}</div>
-                          <div>Price: ${item.price}</div>
                           {customer.foods.length - 1 !== i && (
                             <div style={{ borderTop: "2px solid #bbb" }} />
                           )}
@@ -71,7 +70,7 @@ export default function Customerslist() {
                     })}
                   </td>
                   <td>
-                    {total} <br />
+                    ${total} <br />
                     {customer.deliveryCharges ? `Delivery` : `Pickup`}{" "}
                   </td>
                   <td>
