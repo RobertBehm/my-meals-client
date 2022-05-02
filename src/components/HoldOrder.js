@@ -19,6 +19,7 @@ function HoldOrder({ handleClose }) {
   const cartstate = useSelector((state) => state.cartReducer);
   const cartItems = cartstate.cartItems;
   var subtotal = cartItems.reduce((x, item) => x + item.price, 0);
+  subtotal = subtotal / 100;
   const delivery = useSelector((state) => state.deliveryReducer.delivery);
 
   const [name, setName] = useState("");

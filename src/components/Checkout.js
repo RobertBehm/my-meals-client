@@ -20,6 +20,7 @@ export default function Checkout({ subtotal }) {
   const cartstate = useSelector((state) => state.cartReducer);
   const cartItems = cartstate.cartItems;
   var subtotal = cartItems.reduce((x, item) => x + item.price, 0);
+  subtotal = subtotal / 100;
 
   const processPayment = async () => {
     const url = "/.netlify/functions/charge-card";
