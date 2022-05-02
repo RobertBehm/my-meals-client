@@ -66,7 +66,9 @@ export default function Meal({ meal }) {
 
       <div className="flex-container">
         <div className="m-1 w-100">
-          <h1 className="mt-1">Price : ${meal.prices[0][size] * quantity}</h1>
+          <h1 className="mt-1">
+            Price : ${(meal.prices[0][size] / 100) * quantity}
+          </h1>
         </div>
         <div className="m-1 w-100">
           <button className="btn" onClick={addtocart}>

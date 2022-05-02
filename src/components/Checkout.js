@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import StripeCheckout from "react-stripe-checkout";
+import { loadStripe } from "@stripe/stripe-js";
 import { placeOrder } from "../actions/orderActions";
 import { emptyCart } from "../actions/cartActions";
 import Error from "../components/Error";
@@ -15,6 +17,19 @@ export default function Checkout({ subtotal }) {
   const orderstate = useSelector((state) => state.placeOrderReducer);
   const { loading, error, success } = orderstate;
   const dispatch = useDispatch();
+  const cartstate = useSelector((state) => state.cartReducer);
+  const cartItems = cartstate.cartItems;
+  var subtotal = cartItems.reduce((x, item) => x + item.price, 0);
+
+  const processPayment = async () => {
+    const url = "/.netlify/functions/charge-card";
+
+    const stripe = await loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
+
+    const { data } = await axios.post(url, { cartItems });
+
+    await stripe.redirectToCheckout({ sessionId: data.id });
+  };
 
   const trackCardPayment = () => {
     InitiatedStripeCheckout();
@@ -36,6 +51,9 @@ export default function Checkout({ subtotal }) {
   return (
     <div className="checkout-button-container">
       <div>
+        <button className="btn" onClick={processPayment}>
+          Credit/Debit
+        </button>
         <button className="btn" onClick={handleShow}>
           Payment Options
         </button>
