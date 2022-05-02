@@ -1,21 +1,15 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import StripeCheckout from "react-stripe-checkout";
 import { loadStripe } from "@stripe/stripe-js";
-import { placeOrder } from "../actions/orderActions";
 import { emptyCart } from "../actions/cartActions";
-import Error from "../components/Error";
-import Loading from "../components/Loading";
-import Success from "../components/Success";
 
 import { Modal } from "react-bootstrap";
 import HoldOrder from "./HoldOrder";
-import { InitiatedStripeCheckout } from "../utils/facebook/facebookPixelEvent";
+//import { InitiatedStripeCheckout } from "../utils/facebook/facebookPixelEvent";
 
 export default function Checkout({ subtotal }) {
-  const orderstate = useSelector((state) => state.placeOrderReducer);
-  const { loading, error, success } = orderstate;
+  //const orderstate = useSelector((state) => state.placeOrderReducer);
   const dispatch = useDispatch();
   const cartstate = useSelector((state) => state.cartReducer);
   const cartItems = cartstate.cartItems;
@@ -32,9 +26,9 @@ export default function Checkout({ subtotal }) {
     await stripe.redirectToCheckout({ sessionId: data.id });
   };
 
-  const trackCardPayment = () => {
-    InitiatedStripeCheckout();
-  };
+  //const trackCardPayment = () => {
+  // InitiatedStripeCheckout();
+  //};
 
   const [show, setShow] = useState(false);
 
@@ -44,38 +38,17 @@ export default function Checkout({ subtotal }) {
   };
   const handleShow = () => setShow(true);
 
-  function tokenHander(token) {
-    dispatch(placeOrder(token, subtotal));
-    dispatch(emptyCart());
-  }
-
   return (
     <div className="checkout-button-container">
       <div>
-        <button className="btn" onClick={processPayment}>
-          Credit/Debit
-        </button>
         <button className="btn" onClick={handleShow}>
-          Payment Options
+          Pay With Cash
         </button>
       </div>
       <div>
-        {loading && <Loading />}
-        {error && <Error error="Something went wrong" />}
-        {success && <Success success="Order Placed Successfully" />}
-
-        <StripeCheckout
-          amount={subtotal * 100}
-          shippingAddress
-          billingAddress
-          token={tokenHander}
-          currency="USD"
-          stripeKey={process.env.REACT_APP_STRIPE_PK}
-        >
-          <button className="btn ml-3" onClick={trackCardPayment}>
-            Pay With Card
-          </button>
-        </StripeCheckout>
+        <button className="btn ml-3" onClick={processPayment}>
+          Pay With Card
+        </button>
       </div>
       <Modal show={show} onHide={() => setShow(false)}>
         <Modal.Header>
