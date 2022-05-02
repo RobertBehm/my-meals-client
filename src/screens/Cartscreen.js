@@ -17,7 +17,7 @@ export default function Cartscreen() {
     (x, item) => x + item.quantity * item.prices[0][item.size],
     0
   );
-  subtotal = subtotal / 100;
+  //subtotal = subtotal / 100;
   const delivery = useSelector((state) => state.deliveryReducer.delivery);
   const dispatch = useDispatch();
 
