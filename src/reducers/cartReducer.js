@@ -9,16 +9,16 @@ export const cartReducer = (
       );
 
       if (alreadyExists) {
-        if (action.payload.situation == "ADD_ONE_OR_MORE") {
+        if (action.payload.situation === "ADD_ONE_OR_MORE") {
           var thatItemWithSameSize = state.cartItems.find(
             (item) =>
-              item._id == action.payload.cartItem._id &&
-              item.size == action.payload.cartItem.size
+              item._id === action.payload.cartItem._id &&
+              item.size === action.payload.cartItem.size
           );
           var thatItemWithDiffSize = state.cartItems.find(
             (item) =>
-              item._id == action.payload.cartItem._id &&
-              item.size != action.payload.cartItem.size
+              item._id === action.payload.cartItem._id &&
+              item.size !== action.payload.cartItem.size
           );
 
           if (thatItemWithSameSize && !thatItemWithDiffSize) {
@@ -33,7 +33,7 @@ export const cartReducer = (
               ...state,
               cartItems: [
                 ...state.cartItems.filter(
-                  (item) => item._id != action.payload.cartItem._id
+                  (item) => item._id !== action.payload.cartItem._id
                 ),
                 thatItemWithSameSize,
               ],
@@ -55,7 +55,7 @@ export const cartReducer = (
               ...state,
               cartItems: [
                 ...state.cartItems.filter(
-                  (item) => item._id != action.payload.cartItem._id
+                  (item) => item._id !== action.payload.cartItem._id
                 ),
                 thatItemWithSameSize,
                 thatItemWithDiffSize,
@@ -63,8 +63,8 @@ export const cartReducer = (
             };
           }
         } else if (
-          action.payload.situation == "ADD_ONE" ||
-          action.payload.situation == "SUB_ONE"
+          action.payload.situation === "ADD_ONE" ||
+          action.payload.situation === "SUB_ONE"
         ) {
           return {
             ...state,
@@ -88,7 +88,8 @@ export const cartReducer = (
         cartItems: state.cartItems.filter(
           (item) =>
             item._id !== action.payload._id ||
-            (item._id == action.payload._id && item.size != action.payload.size)
+            (item._id === action.payload._id &&
+              item.size !== action.payload.size)
         ),
       };
     case "EMPTY_CART":
