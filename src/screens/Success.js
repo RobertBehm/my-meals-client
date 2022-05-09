@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Purchases } from "../utils/facebook/facebookPixelEvent";
 
 const Success = () => {
