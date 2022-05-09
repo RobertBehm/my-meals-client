@@ -1,13 +1,13 @@
 export const ViewedCart = () => {
-  window.fbq("track", "ViewedCart");
+  window.fbq("trackCustom", "ViewedCart");
 };
 
 export const Purchases = () => {
-  window.fbq("track", "Purchases");
+  window.fbq("trackCustom", "Purchases");
 };
 
 export const InitiatedStripeCheckout = () => {
-  window.fbq("track", "InitiatedStripeCheckout");
+  window.fbq("trackCustom", "InitiatedStripeCheckout");
 };
 
 export const ClickedCashApp = () => {
@@ -23,5 +23,5 @@ export const ClickedPaymentOptions = () => {
 };
 
 export const SubmittedOrderForm = () => {
-  window.fbq("track", "SubmittedOrderForm");
+  window.fbq("trackCustom", "SubmittedOrderForm");
 };
