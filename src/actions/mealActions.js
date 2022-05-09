@@ -57,7 +57,7 @@ export const addMeal = (meal) => async (dispatch) => {
   dispatch({ type: "ADD_MEAL_REQUEST" });
   try {
     const response = await axios.post(
-      `${"https://my-meal-service.herokuapp.com"}api/meals/addmeal`,
+      `${"https://my-meal-service.herokuapp.com"}/api/meals/addmeal`,
       { meal }
     );
     console.log(response);
