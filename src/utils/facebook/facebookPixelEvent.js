@@ -2,6 +2,10 @@ export const ViewedCart = () => {
   window.fbq("track", "ViewedCart");
 };
 
+export const Purchases = () => {
+  window.fbq("track", "Purchases");
+};
+
 export const InitiatedStripeCheckout = () => {
   window.fbq("track", "InitiatedStripeCheckout");
 };

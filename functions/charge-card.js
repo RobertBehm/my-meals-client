@@ -25,7 +25,7 @@ exports.handler = async (event, context) => {
       allowed_countries: ["US"],
     },
     success_url: `${process.env.URL}/success`,
-    cancel_url: `${process.env.URL}/cancelled`,
+    cancel_url: `${process.env.URL}/cart`,
   });
 
   return {
