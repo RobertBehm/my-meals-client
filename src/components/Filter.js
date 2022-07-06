@@ -41,7 +41,7 @@ export default function Filter() {
               dispatch(filterMeals(searchkey, category));
             }}
           >
-            FILTER
+            SEARCH
           </button>
         </div>
       </div>
