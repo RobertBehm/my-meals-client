@@ -29,8 +29,8 @@ export default function Filter() {
           >
             <option value="all">All</option>
             <option value="breakfast">Breakfast</option>
-            <option value="lunch">Snacks</option>
-            <option value="dinner">Entree</option>
+            <option value="snacks">Snacks</option>
+            <option value="entree">Entree</option>
           </select>
         </div>
         <div className="col-md-3 w-100">
