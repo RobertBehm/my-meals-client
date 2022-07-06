@@ -31,6 +31,7 @@ export default function Filter() {
             <option value="breakfast">Breakfast</option>
             <option value="snacks">Snacks</option>
             <option value="entree">Entree</option>
+            <option value="by-the-lb">By The LB </option>
           </select>
         </div>
         <div className="col-md-3 w-100">
