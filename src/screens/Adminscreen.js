@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import { Link } from "react-router-dom";
-import Hidden from "@material-ui/core/Hidden";
 import styled from "styled-components";
 
 import Addmeal from "./Addmeal";
