@@ -33,7 +33,7 @@ h1 {
 .btn {
   background-color: #0554fe !important;
   color: white !important;
-  box-shadow: none !important !
+  box-shadow: none !important;
 }
 
 .btn:hover {
@@ -190,4 +190,8 @@ h5 {
 }
 span { 
   font-size: 14px;
+}
+.table-style {
+  display: flex;
+  flex-direction: column;
 }

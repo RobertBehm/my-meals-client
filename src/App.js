@@ -3,8 +3,10 @@ import "bootstrap";
 import "./App.css";
 import { BrowserRouter, Route } from "react-router-dom";
 import Spinner from "./components/Spinner";
+import Hidden from "@material-ui/core/Hidden";
 
 import Navbar from "./components/Navbar";
+import PreNav from "./components/preNav";
 
 const Homescreen = lazy(() => import("./screens/Homescreen"));
 const Cartscreen = lazy(() => import("./screens/Cartscreen"));
@@ -19,6 +21,9 @@ const Cancelled = lazy(() => import("./screens/Cancelled"));
 function App() {
   return (
     <div className="App">
+      <Hidden smUp>
+        <PreNav />
+      </Hidden>
       <Navbar />
 
       <Suspense fallback={<Spinner />}>

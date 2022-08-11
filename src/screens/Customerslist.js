@@ -1,8 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteCustomer, getAllCustomers } from "../actions/customerAction";
-//import DeleteIcon from "@material-ui/icons/Delete";
-//import IconButton from "@material-ui/core/IconButton";
 
 export default function Customerslist() {
   const dispatch = useDispatch();
@@ -14,8 +12,8 @@ export default function Customerslist() {
   }, []);
 
   return (
-    <div>
-      <table className="table table-striped table-bordered table-responsive-sm">
+    <div className="table-responsive-sm">
+      <table className="table table-striped table-bordered">
         <thead>
           <tr>
             <th>Name</th>

@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import { Link } from "react-router-dom";
+import Hidden from "@material-ui/core/Hidden";
+import styled from "styled-components";
 
 import Addmeal from "./Addmeal";
 import Editmeal from "./Editmeal";
@@ -30,33 +32,33 @@ export default function Adminscreen() {
         <div className="col-md-10">
           <h2 style={{ fontSize: "35px" }}>Admin Panel</h2>
 
-          <ul className="adminfunctions">
-            <li>
+          <StyledUL className="adminfunctions">
+            <StyledList>
               <Link to={"/admin/userslist"} style={{ color: "white" }}>
                 Users List
               </Link>
-            </li>
-            <li>
+            </StyledList>
+            <StyledList>
               <Link to={"/admin/mealslist"} style={{ color: "white" }}>
                 Meals List
               </Link>
-            </li>
-            <li>
+            </StyledList>
+            <StyledList>
               <Link to={"/admin/addmeal"} style={{ color: "white" }}>
                 Add Meal
               </Link>
-            </li>
-            <li>
+            </StyledList>
+            <StyledList>
               <Link to={"/admin/orderslist"} style={{ color: "white" }}>
                 Orders List
               </Link>
-            </li>
-            <li>
+            </StyledList>
+            <StyledList>
               <Link to={"/admin/customerslist"} style={{ color: "white" }}>
                 Cash Orders
               </Link>
-            </li>
-          </ul>
+            </StyledList>
+          </StyledUL>
 
           <Switch>
             <Route path="/admin" component={Userslist} exact />
@@ -76,3 +78,16 @@ export default function Adminscreen() {
     </div>
   );
 }
+
+const StyledUL = styled.ul`
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+  }
+`;
+
+const StyledList = styled.li`
+  @media (max-width: 768px) {
+    margin: 0.5rem;
+  }
+`;

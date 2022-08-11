@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { deleteMeal, getAllMeals } from "../actions/mealActions";
 import Error from "../components/Error";
 import Filter from "../components/Filter";
 import Loading from "../components/Loading";
+import Hidden from "@material-ui/core/Hidden";
 
 export default function Mealslist() {
   const dispatch = useDispatch();
@@ -26,7 +28,9 @@ export default function Mealslist() {
           <tr>
             <th>Name</th>
             <th>Prices</th>
-            <th>Category</th>
+            <Hidden smDown>
+              <th>Category</th>
+            </Hidden>
             <th>Actions</th>
           </tr>
         </thead>
@@ -40,7 +44,9 @@ export default function Mealslist() {
                     Regular : {meal.prices[0]["regular"]} <br />
                     Large : {meal.prices[0]["large"]}
                   </td>
-                  <td>{meal.category}</td>
+                  <Hidden smDown>
+                    <td>{meal.category}</td>
+                  </Hidden>
                   <td>
                     <i
                       className="fa fa-trash m-1"
@@ -60,3 +66,5 @@ export default function Mealslist() {
     </div>
   );
 }
+
+const StyledWrapper = styled.div``;
