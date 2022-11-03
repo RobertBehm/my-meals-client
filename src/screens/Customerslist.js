@@ -7,6 +7,9 @@ export default function Customerslist() {
 
   const customersstate = useSelector((state) => state.getAllCustomersReducer);
   const { customers } = customersstate;
+
+  console.log(customers);
+
   useEffect(() => {
     dispatch(getAllCustomers());
   }, []);
