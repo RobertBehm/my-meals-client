@@ -4,7 +4,7 @@ export const getAllMeals = () => async (dispatch) => {
 
   try {
     const response = await axios.get(
-      `${"https://my-meal-service.herokuapp.com"}/api/meals/getallmeals`
+      `${process.env.MEALS_API}/meals/getallmeals`
     );
     console.log(response);
     console.log("aa2");
@@ -20,7 +20,7 @@ export const getMealById = (mealid) => async (dispatch) => {
 
   try {
     const response = await axios.post(
-      `${"https://my-meal-service.herokuapp.com"}/api/meals/getmealbyid`,
+      `${process.env.MEALS_API}/meals/getmealbyid`,
       { mealid }
     );
     console.log(response);
@@ -36,7 +36,7 @@ export const filterMeals = (searchkey, category) => async (dispatch) => {
   try {
     var filteredMeals;
     const response = await axios.get(
-      `${"https://my-meal-service.herokuapp.com"}/api/meals/getallmeals`
+      `${process.env.MEALS_API}/meals/getallmeals`
     );
     filteredMeals = response.data.filter((meal) =>
       meal.name.toLowerCase().includes(searchkey)
@@ -57,7 +57,7 @@ export const addMeal = (meal) => async (dispatch) => {
   dispatch({ type: "ADD_MEAL_REQUEST" });
   try {
     const response = await axios.post(
-      `${"https://my-meal-service.herokuapp.com"}/api/meals/addmeal`,
+      `${process.env.MEALS_API}/meals/addmeal`,
       { meal }
     );
     console.log(response);
@@ -71,7 +71,7 @@ export const editMeal = (editedmeal) => async (dispatch) => {
   dispatch({ type: "EDIT_MEAL_REQUEST" });
   try {
     const response = await axios.post(
-      `${"https://my-meal-service.herokuapp.com"}/api/meals/editmeal`,
+      `${process.env.MEALS_API}/meals/editmeal`,
       { editedmeal }
     );
     console.log(response);
@@ -85,7 +85,7 @@ export const editMeal = (editedmeal) => async (dispatch) => {
 export const deleteMeal = (mealid) => async (dispatch) => {
   try {
     const response = await axios.post(
-      `${"https://my-meal-service.herokuapp.com"}/api/meals/deletemeal`,
+      `${process.env.MEALS_API}/api/meals/deletemeal`,
       { mealid }
     );
     alert("Meal Deleted Successfully");

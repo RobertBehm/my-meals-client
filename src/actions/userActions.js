@@ -4,7 +4,7 @@ export const registerUser = (user) => async (dispatch) => {
 
   try {
     const response = await axios.post(
-      `${"https://my-meal-service.herokuapp.com"}/api/users/register`,
+      `${process.env.MEALS_API}/users/register`,
       user
     );
     console.log(response);
@@ -19,7 +19,7 @@ export const loginUser = (user) => async (dispatch) => {
 
   try {
     const response = await axios.post(
-      `${"https://my-meal-service.herokuapp.com"}/api/users/login`,
+      `${process.env.MEALS_API}/users/login`,
       user
     );
     console.log(response);
@@ -41,7 +41,7 @@ export const getAllUsers = () => async (dispatch) => {
 
   try {
     const response = await axios.get(
-      `${"https://my-meal-service.herokuapp.com"}/api/users/getallusers`
+      `${process.env.MEALS_API}/users/getallusers`
     );
     console.log(response);
     dispatch({ type: "GET_USERS_SUCCESS", payload: response.data });
@@ -52,10 +52,9 @@ export const getAllUsers = () => async (dispatch) => {
 
 export const deleteUser = (userid) => async (dispatch) => {
   try {
-    await axios.post(
-      `${"https://my-meal-service.herokuapp.com"}/api/users/deleteuser`,
-      { userid }
-    );
+    await axios.post(`${process.env.MEALS_API}/users/deleteuser`, {
+      userid,
+    });
     alert("User deleted successfully");
     window.location.reload();
   } catch (error) {

@@ -4,7 +4,7 @@ export const getAllCustomers = () => async (dispatch) => {
 
   try {
     const response = await axios.get(
-      `${"https://my-meal-service.herokuapp.com"}/api/customers/getallcustomers`
+      `${process.env.MEALS_API}/customers/getallcustomers`
     );
     console.log(response);
     dispatch({ type: "GET_CUSTOMERS_SUCCESS", payload: response.data });
@@ -18,7 +18,7 @@ export const addCustomer = (customer) => async (dispatch) => {
 
   try {
     const response = await axios.post(
-      `${"https://my-meal-service.herokuapp.com"}/api/customers/addcustomer`,
+      `${process.env.MEALS_API}/customers/addcustomer`,
       {
         customer,
       }
@@ -33,7 +33,7 @@ export const addCustomer = (customer) => async (dispatch) => {
 export const deleteCustomer = (customerid) => async (dispatch) => {
   try {
     const response = await axios.post(
-      `${"https://my-meal-service.herokuapp.com"}/api/customers/deletecustomer`,
+      `${process.env.MEALS_API}/customers/deletecustomer`,
       { customerid }
     );
     alert("Customer Deleted Successfully");

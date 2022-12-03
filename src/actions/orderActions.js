@@ -6,7 +6,7 @@ export const placeOrder = (token, subtotal) => async (dispatch, getState) => {
 
   try {
     const response = await axios.post(
-      `${"https://my-meal-service.herokuapp.com"}/api/orders/placeorder`,
+      `${process.env.MEALS_API}/orders/placeorder`,
       { token, subtotal, currentUser, cartItems }
     );
     dispatch({ type: "PLACE_ORDER_SUCCESS" });
@@ -23,7 +23,7 @@ export const getUserOrders = () => async (dispatch, getState) => {
 
   try {
     const response = await axios.post(
-      `${"https://my-meal-service.herokuapp.com"}/api/orders/getuserorders`,
+      `${process.env.MEALS_API}/orders/getuserorders`,
       { userid: currentUser._id }
     );
 
@@ -41,7 +41,7 @@ export const getAllOrders = () => async (dispatch, getState) => {
 
   try {
     const response = await axios.get(
-      `${"https://my-meal-service.herokuapp.com"}/api/orders/getallorders`
+      `${process.env.MEALS_API}/orders/getallorders`
     );
 
     console.log(response);
@@ -55,7 +55,7 @@ export const getAllOrders = () => async (dispatch, getState) => {
 export const deliverOrder = (orderid) => async (dispatch) => {
   try {
     const response = await axios.post(
-      `${"https://my-meal-service.herokuapp.com"}/api/orders/deliverorder`,
+      `${process.env.MEALS_API}/orders/deliverorder`,
       { orderid }
     );
     console.log(response);
