@@ -3,9 +3,7 @@ export const getAllCustomers = () => async (dispatch) => {
   dispatch({ type: "GET_CUSTOMERS_REQUEST" });
 
   try {
-    const response = await axios.get(
-      `${process.env.MEALS_API}/customers/getallcustomers`
-    );
+    const response = await axios.get(`api/v1/customers/getallcustomers`);
     console.log(response);
     dispatch({ type: "GET_CUSTOMERS_SUCCESS", payload: response.data });
   } catch (error) {
@@ -17,12 +15,9 @@ export const addCustomer = (customer) => async (dispatch) => {
   dispatch({ type: "ADD_CUSTOMER_REQUEST" });
 
   try {
-    const response = await axios.post(
-      `${process.env.MEALS_API}/customers/addcustomer`,
-      {
-        customer,
-      }
-    );
+    const response = await axios.post(`/api/v1/customers/addcustomer`, {
+      customer,
+    });
     console.log(response);
     dispatch({ type: "ADD_CUSTOMER_SUCCESS" });
   } catch (error) {
@@ -32,10 +27,9 @@ export const addCustomer = (customer) => async (dispatch) => {
 
 export const deleteCustomer = (customerid) => async (dispatch) => {
   try {
-    const response = await axios.post(
-      `${process.env.MEALS_API}/customers/deletecustomer`,
-      { customerid }
-    );
+    const response = await axios.post(`api/v1/customers/deletecustomer`, {
+      customerid,
+    });
     alert("Customer Deleted Successfully");
     console.log(response);
     window.location.reload();

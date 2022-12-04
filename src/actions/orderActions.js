@@ -5,10 +5,12 @@ export const placeOrder = (token, subtotal) => async (dispatch, getState) => {
   const cartItems = getState().cartReducer.cartItems;
 
   try {
-    const response = await axios.post(
-      `${process.env.MEALS_API}/orders/placeorder`,
-      { token, subtotal, currentUser, cartItems }
-    );
+    const response = await axios.post(`api/v1/orders/placeorder`, {
+      token,
+      subtotal,
+      currentUser,
+      cartItems,
+    });
     dispatch({ type: "PLACE_ORDER_SUCCESS" });
     console.log(response);
   } catch (error) {
@@ -22,10 +24,9 @@ export const getUserOrders = () => async (dispatch, getState) => {
   dispatch({ type: "GET_USER_ORDERS_REQUEST" });
 
   try {
-    const response = await axios.post(
-      `${process.env.MEALS_API}/orders/getuserorders`,
-      { userid: currentUser._id }
-    );
+    const response = await axios.post(`api/v1/orders/getuserorders`, {
+      userid: currentUser._id,
+    });
 
     console.log(response);
 
@@ -40,9 +41,7 @@ export const getAllOrders = () => async (dispatch, getState) => {
   dispatch({ type: "GET_ALLORDERS_REQUEST" });
 
   try {
-    const response = await axios.get(
-      `${process.env.MEALS_API}/orders/getallorders`
-    );
+    const response = await axios.get(`api/v1/orders/getallorders`);
 
     console.log(response);
 
@@ -54,13 +53,12 @@ export const getAllOrders = () => async (dispatch, getState) => {
 
 export const deliverOrder = (orderid) => async (dispatch) => {
   try {
-    const response = await axios.post(
-      `${process.env.MEALS_API}/orders/deliverorder`,
-      { orderid }
-    );
+    const response = await axios.post(`api/v1/orders/deliverorder`, {
+      orderid,
+    });
     console.log(response);
     alert("Order Delivered");
-    const orders = await axios.get("/api/orders/getallorders");
+    const orders = await axios.get(`api/v1/orders/getallorders`);
     dispatch({ type: "GET_ALLORDERS_SUCCESS", payload: orders.data });
   } catch (error) {
     console.log(error);

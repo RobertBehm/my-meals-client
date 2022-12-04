@@ -3,9 +3,7 @@ export const getAllMeals = () => async (dispatch) => {
   dispatch({ type: "GET_MEALS_REQUEST" });
 
   try {
-    const response = await axios.get(
-      `${process.env.MEALS_API}/meals/getallmeals`
-    );
+    const response = await axios.get(`api/v1/meals/getallmeals`);
     console.log(response);
     console.log("aa2");
     dispatch({ type: "GET_MEALS_SUCCESS", payload: response.data });
@@ -19,10 +17,7 @@ export const getMealById = (mealid) => async (dispatch) => {
   dispatch({ type: "GET_MEALBYID_REQUEST" });
 
   try {
-    const response = await axios.post(
-      `${process.env.MEALS_API}/meals/getmealbyid`,
-      { mealid }
-    );
+    const response = await axios.post(`api/v1/meals/getmealbyid`, { mealid });
     console.log(response);
     dispatch({ type: "GET_MEALBYID_SUCCESS", payload: response.data });
   } catch (error) {
@@ -35,9 +30,7 @@ export const filterMeals = (searchkey, category) => async (dispatch) => {
 
   try {
     var filteredMeals;
-    const response = await axios.get(
-      `${process.env.MEALS_API}/meals/getallmeals`
-    );
+    const response = await axios.get(`api/v1/meals/getallmeals`);
     filteredMeals = response.data.filter((meal) =>
       meal.name.toLowerCase().includes(searchkey)
     );
@@ -56,10 +49,7 @@ export const filterMeals = (searchkey, category) => async (dispatch) => {
 export const addMeal = (meal) => async (dispatch) => {
   dispatch({ type: "ADD_MEAL_REQUEST" });
   try {
-    const response = await axios.post(
-      `${process.env.MEALS_API}/meals/addmeal`,
-      { meal }
-    );
+    const response = await axios.post(`api/v1/meals/addmeal`, { meal });
     console.log(response);
     dispatch({ type: "ADD_MEAL_SUCCESS" });
   } catch (error) {
@@ -70,10 +60,7 @@ export const addMeal = (meal) => async (dispatch) => {
 export const editMeal = (editedmeal) => async (dispatch) => {
   dispatch({ type: "EDIT_MEAL_REQUEST" });
   try {
-    const response = await axios.post(
-      `${process.env.MEALS_API}/meals/editmeal`,
-      { editedmeal }
-    );
+    const response = await axios.post(`api/v1/meals/editmeal`, { editedmeal });
     console.log(response);
     dispatch({ type: "EDIT_MEAL_SUCCESS" });
     window.location.href = "/admin/mealslist";
@@ -84,10 +71,7 @@ export const editMeal = (editedmeal) => async (dispatch) => {
 
 export const deleteMeal = (mealid) => async (dispatch) => {
   try {
-    const response = await axios.post(
-      `${process.env.MEALS_API}/api/meals/deletemeal`,
-      { mealid }
-    );
+    const response = await axios.post(`api/v1/meals/deletemeal`, { mealid });
     alert("Meal Deleted Successfully");
     console.log(response);
     window.location.reload();
